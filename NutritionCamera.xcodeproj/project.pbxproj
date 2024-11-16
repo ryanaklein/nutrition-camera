@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		6ECC22C42CE8F2A300D5E865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ECC22B22CE8F2A200D5E865;
+			remoteInfo = NutritionCamera;
+		};
+		6ECC22CE2CE8F2A300D5E865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ECC22B22CE8F2A200D5E865;
+			remoteInfo = NutritionCamera;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6ECC22B32CE8F2A200D5E865 /* NutritionCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ECC22C32CE8F2A300D5E865 /* NutritionCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ECC22CD2CE8F2A300D5E865 /* NutritionCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6ECC22B52CE8F2A200D5E865 /* NutritionCamera */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionCamera;
+			sourceTree = "<group>";
+		};
+		6ECC22C62CE8F2A300D5E865 /* NutritionCameraTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionCameraTests;
+			sourceTree = "<group>";
+		};
+		6ECC22D02CE8F2A300D5E865 /* NutritionCameraUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionCameraUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6ECC22B02CE8F2A200D5E865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22C02CE8F2A300D5E865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22CA2CE8F2A300D5E865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6ECC22AA2CE8F2A200D5E865 = {
+			isa = PBXGroup;
+			children = (
+				6ECC22B52CE8F2A200D5E865 /* NutritionCamera */,
+				6ECC22C62CE8F2A300D5E865 /* NutritionCameraTests */,
+				6ECC22D02CE8F2A300D5E865 /* NutritionCameraUITests */,
+				6ECC22B42CE8F2A200D5E865 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6ECC22B42CE8F2A200D5E865 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6ECC22B32CE8F2A200D5E865 /* NutritionCamera.app */,
+				6ECC22C32CE8F2A300D5E865 /* NutritionCameraTests.xctest */,
+				6ECC22CD2CE8F2A300D5E865 /* NutritionCameraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6ECC22B22CE8F2A200D5E865 /* NutritionCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ECC22D72CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCamera" */;
+			buildPhases = (
+				6ECC22AF2CE8F2A200D5E865 /* Sources */,
+				6ECC22B02CE8F2A200D5E865 /* Frameworks */,
+				6ECC22B12CE8F2A200D5E865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6ECC22B52CE8F2A200D5E865 /* NutritionCamera */,
+			);
+			name = NutritionCamera;
+			packageProductDependencies = (
+			);
+			productName = NutritionCamera;
+			productReference = 6ECC22B32CE8F2A200D5E865 /* NutritionCamera.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6ECC22C22CE8F2A300D5E865 /* NutritionCameraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ECC22DA2CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCameraTests" */;
+			buildPhases = (
+				6ECC22BF2CE8F2A300D5E865 /* Sources */,
+				6ECC22C02CE8F2A300D5E865 /* Frameworks */,
+				6ECC22C12CE8F2A300D5E865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6ECC22C52CE8F2A300D5E865 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6ECC22C62CE8F2A300D5E865 /* NutritionCameraTests */,
+			);
+			name = NutritionCameraTests;
+			packageProductDependencies = (
+			);
+			productName = NutritionCameraTests;
+			productReference = 6ECC22C32CE8F2A300D5E865 /* NutritionCameraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6ECC22CC2CE8F2A300D5E865 /* NutritionCameraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ECC22DD2CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCameraUITests" */;
+			buildPhases = (
+				6ECC22C92CE8F2A300D5E865 /* Sources */,
+				6ECC22CA2CE8F2A300D5E865 /* Frameworks */,
+				6ECC22CB2CE8F2A300D5E865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6ECC22CF2CE8F2A300D5E865 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6ECC22D02CE8F2A300D5E865 /* NutritionCameraUITests */,
+			);
+			name = NutritionCameraUITests;
+			packageProductDependencies = (
+			);
+			productName = NutritionCameraUITests;
+			productReference = 6ECC22CD2CE8F2A300D5E865 /* NutritionCameraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6ECC22AB2CE8F2A200D5E865 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					6ECC22B22CE8F2A200D5E865 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					6ECC22C22CE8F2A300D5E865 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 6ECC22B22CE8F2A200D5E865;
+					};
+					6ECC22CC2CE8F2A300D5E865 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 6ECC22B22CE8F2A200D5E865;
+					};
+				};
+			};
+			buildConfigurationList = 6ECC22AE2CE8F2A200D5E865 /* Build configuration list for PBXProject "NutritionCamera" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6ECC22AA2CE8F2A200D5E865;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6ECC22B42CE8F2A200D5E865 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6ECC22B22CE8F2A200D5E865 /* NutritionCamera */,
+				6ECC22C22CE8F2A300D5E865 /* NutritionCameraTests */,
+				6ECC22CC2CE8F2A300D5E865 /* NutritionCameraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6ECC22B12CE8F2A200D5E865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22C12CE8F2A300D5E865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22CB2CE8F2A300D5E865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6ECC22AF2CE8F2A200D5E865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22BF2CE8F2A300D5E865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ECC22C92CE8F2A300D5E865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6ECC22C52CE8F2A300D5E865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6ECC22B22CE8F2A200D5E865 /* NutritionCamera */;
+			targetProxy = 6ECC22C42CE8F2A300D5E865 /* PBXContainerItemProxy */;
+		};
+		6ECC22CF2CE8F2A300D5E865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6ECC22B22CE8F2A200D5E865 /* NutritionCamera */;
+			targetProxy = 6ECC22CE2CE8F2A300D5E865 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6ECC22D52CE8F2A300D5E865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6ECC22D62CE8F2A300D5E865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6ECC22D82CE8F2A300D5E865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutritionCamera/Preview Content\"";
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6ECC22D92CE8F2A300D5E865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutritionCamera/Preview Content\"";
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCamera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6ECC22DB2CE8F2A300D5E865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCameraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutritionCamera.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutritionCamera";
+			};
+			name = Debug;
+		};
+		6ECC22DC2CE8F2A300D5E865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCameraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutritionCamera.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutritionCamera";
+			};
+			name = Release;
+		};
+		6ECC22DE2CE8F2A300D5E865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCameraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NutritionCamera;
+			};
+			name = Debug;
+		};
+		6ECC22DF2CE8F2A300D5E865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionCameraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NutritionCamera;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6ECC22AE2CE8F2A200D5E865 /* Build configuration list for PBXProject "NutritionCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ECC22D52CE8F2A300D5E865 /* Debug */,
+				6ECC22D62CE8F2A300D5E865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ECC22D72CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ECC22D82CE8F2A300D5E865 /* Debug */,
+				6ECC22D92CE8F2A300D5E865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ECC22DA2CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCameraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ECC22DB2CE8F2A300D5E865 /* Debug */,
+				6ECC22DC2CE8F2A300D5E865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ECC22DD2CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCameraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ECC22DE2CE8F2A300D5E865 /* Debug */,
+				6ECC22DF2CE8F2A300D5E865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
+}
