@@ -10,7 +10,7 @@ import AVFoundation
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showCamera: Bool = false
+    @State private var showCamera: Bool = true
     @State private var hasPhoto: Bool = false
     @State private var imageData: Data? = nil
     @State private var showAccessError: Bool = false
@@ -31,32 +31,9 @@ struct ContentView: View {
             VStack {
                 if hasPhoto {
                     ImageView(showCamera: $showCamera, imageData: $imageData)
-                } else {
-                    Spacer()
-
-                    Image(systemName: "text.aligncenter")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(.gray)
-                        .opacity(0.50)
-                        .frame(width: 150, height: 150)
-
-                    Spacer()
-
-                    Button("Take a Photo") {
-                        showCamera = true
-                    }
-                    .padding()
-                    .font(.title2)
-                    .background(Color.blue)
-                    .foregroundStyle(.white)
-                    .clipShape(Capsule())
-
-                    Spacer()
+                } else if showCamera {
+                    CameraUI(showCamera: $showCamera, showAccessError: $showAccessError, hasPhoto: $hasPhoto, imageData: $imageData)
                 }
-            }
-            .fullScreenCover(isPresented: $showCamera) {
-                CameraUI(showCamera: $showCamera, showAccessError: $showAccessError, hasPhoto: $hasPhoto, imageData: $imageData)
             }
         }
     }
