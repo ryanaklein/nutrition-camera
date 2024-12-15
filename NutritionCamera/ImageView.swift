@@ -14,15 +14,16 @@ struct ImageView: View {
 
     @State private var imageOCR = OCR()
     @State private var languageCorrection = false
-    @State private var selectedRecognitionLevel = "Accurate"
+    @State private var selectedMacro = "Calories"
     @State private var selectedLanguage = Locale.Language(identifier: "en-US")
+    @State private var currentZoom = 0.0
+    @State private var totalZoom = 1.0
 
     var recognitionLevels = ["Accurate", "Fast"]
 
     /// Watch for changes to the request settings.
     var settingChanges: [String] {[
         languageCorrection.description,
-        selectedRecognitionLevel,
         imageData!.description,
         selectedLanguage.maximalIdentifier
     ]}
@@ -61,56 +62,55 @@ struct ImageView: View {
                         .resizable()
                         .scaledToFit()
                         .overlay {
-                            ForEach(imageOCR.observations, id: \.uuid) { observation in
-                                Box(observation: observation)
-                                    .stroke(.red, lineWidth: 1)
+                            ForEach(imageOCR.foundStrings) { observation in
+                                Button(action:{handleTapGesture(id: observation.id)}){
+                                    Box(observation: observation)
+                                        .stroke(.red, lineWidth: 1)
+                                }
                             }
                         }
                         .padding()
+                        .scaleEffect(currentZoom + totalZoom)
+                        .gesture(
+                            MagnifyGesture()
+                                .onChanged { value in
+                                    currentZoom = value.magnification - 1
+                                }
+                                .onEnded { value in
+                                    totalZoom += currentZoom
+                                    currentZoom = 0
+                                }
+                        )
+                        .accessibilityZoomAction { action in
+                            if action.direction == .zoomIn {
+                                totalZoom += 1
+                            } else {
+                                totalZoom -= 1
+                            }
+                        }
                 }
 
                 /// Select the recognition level — fast or accurate.
-                Picker("Recognition Level", selection: $selectedRecognitionLevel) {
-                    ForEach(recognitionLevels, id: \.self) {
+                Picker("Selected Macro", selection: $selectedMacro) {
+                    ForEach(["Calories", "Fat", "Carbs", "Protein"], id: \.self) {
                         Text($0)
                     }
                 }
-                .overlay(Capsule().stroke(.blue, lineWidth: 1))
+                .pickerStyle(.segmented)
 
-                /// Indicates whether the request uses the language-correction model.
-                Toggle("Language Correction", isOn: $languageCorrection)
-                    .frame(width: 250)
-
-                /// Select which language the request prioritizes to detect.
-                Picker("Language", selection: $selectedLanguage) {
-                    ForEach(imageOCR.request.supportedRecognitionLanguages, id: \.self) { language in
-                        Text(language.maximalIdentifier)
-                    }
-                }
-                .overlay(Capsule().stroke(.blue, lineWidth: 1))
             }
             /// Initially perform the request, and then perform the request when changes occur to the request settings.
             .onChange(of: settingChanges, initial: true) {
-                updateRequestSettings()
                 Task {
                     try await imageOCR.performOCR(imageData: imageData!)
                 }
             }
         }
     }
-
-    /// Update the request settings based on the selected options on the `ImageView`.
-    func updateRequestSettings() {
-        /// A Boolean value that indicates whether the system applies the language-correction model.
-        imageOCR.request.usesLanguageCorrection = languageCorrection
-
-        imageOCR.request.recognitionLanguages = [selectedLanguage]
-
-        switch selectedRecognitionLevel {
-        case "Fast":
-            imageOCR.request.recognitionLevel = .fast
-        default:
-            imageOCR.request.recognitionLevel = .accurate
+    
+    func handleTapGesture(id: UUID) {
+        if let index = imageOCR.foundStrings.firstIndex(where: {$0.id == id}) {
+            imageOCR.foundStrings[index].macro = selectedMacro
         }
     }
 }

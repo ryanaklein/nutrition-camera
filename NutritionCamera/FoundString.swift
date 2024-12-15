@@ -8,10 +8,13 @@
 import Foundation
 import Vision
 
-struct FoundString: Codable{
+struct FoundString: Codable, BoundingBoxProviding, Identifiable{
+    let id: UUID
     let string: String
     let fullLine: String
     let boundingBox: NormalizedRect
+    
+    var macro: String?
     
     var distanceToCalories: Float?
     var slopeToCalories: Float?

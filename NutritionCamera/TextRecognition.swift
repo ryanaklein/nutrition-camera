@@ -74,7 +74,7 @@ class OCR {
                         let stringRange = transcript.range(of: string)!
                         let boundingBox = topCandidate.boundingBox(for: stringRange)!.boundingBox
                         
-                        let foundString = FoundString(string: String(string), fullLine: transcript, boundingBox: boundingBox)
+                        let foundString = FoundString(id: UUID(), string: String(string), fullLine: transcript, boundingBox: boundingBox)
                         
                         foundStrings.append(foundString)
                     }
