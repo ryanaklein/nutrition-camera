@@ -14,7 +14,7 @@ struct ImageView: View {
 
     @State private var imageOCR = OCR()
     @State private var languageCorrection = false
-    @State private var selectedMacro = "Calories"
+    @State private var selectedMacro = "calories"
     @State private var selectedLanguage = Locale.Language(identifier: "en-US")
     @State private var currentZoom = 0.0
     @State private var totalZoom = 1.0
@@ -62,11 +62,12 @@ struct ImageView: View {
                         .resizable()
                         .scaledToFit()
                         .overlay {
-                            ForEach(imageOCR.foundStrings) { observation in
-                                Button(action:{handleTapGesture(id: observation.id)}){
-                                    Box(observation: observation)
-                                        .stroke(.red, lineWidth: 1)
+                            ForEach(imageOCR.foundStringsWithMacros) { observation in
+                                
+                                ButtonBox(foundString: observation, image: uiImage){
+                                    handleTapGesture(id: observation.id)
                                 }
+                                
                             }
                         }
                         .padding()
@@ -92,11 +93,41 @@ struct ImageView: View {
 
                 /// Select the recognition level — fast or accurate.
                 Picker("Selected Macro", selection: $selectedMacro) {
-                    ForEach(["Calories", "Fat", "Carbs", "Protein"], id: \.self) {
+                    ForEach(["calories", "fat", "carbs", "protein"], id: \.self) {
                         Text($0)
                     }
                 }
                 .pickerStyle(.segmented)
+                
+                Button("Send"){
+                    let encoder = JSONEncoder()
+                    
+                    let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
+                    
+                    let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/hello/")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    
+                    let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
+                        if let error = error {
+                            print ("error: \(error)")
+                            return
+                        }
+                        guard let response = response as? HTTPURLResponse,
+                            (200...299).contains(response.statusCode) else {
+                            print ("server error")
+                            return
+                        }
+                        if let mimeType = response.mimeType,
+                            mimeType == "application/json",
+                            let data = data,
+                            let dataString = String(data: data, encoding: .utf8) {
+                            print ("got data: \(dataString)")
+                        }
+                    }
+                    task.resume()
+                }
 
             }
             /// Initially perform the request, and then perform the request when changes occur to the request settings.
@@ -109,8 +140,56 @@ struct ImageView: View {
     }
     
     func handleTapGesture(id: UUID) {
-        if let index = imageOCR.foundStrings.firstIndex(where: {$0.id == id}) {
-            imageOCR.foundStrings[index].macro = selectedMacro
+        
+        
+        
+        if let index = imageOCR.foundStringsWithMacros.firstIndex(where: {$0.id == id}) {
+            imageOCR.foundStringsWithMacros[index].macro = selectedMacro
+        }
+    }
+}
+
+struct ButtonBox: View {
+    let foundString: FoundString
+    let image: UIImage
+    
+    let callback: () -> Void
+    
+    var body: some View {
+        
+        GeometryReader{proxy in
+            Button(action: callback){
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width: getImageRect(proxy).width, height: getImageRect(proxy).height)
+                    .border(getStroke(foundString: foundString))
+                    
+            }
+            .position(CGPoint(x: getImageRect(proxy).midX, y: getImageRect(proxy).midY))
+            
+        }
+    
+        
+    }
+    
+    func getImageRect(_ proxy: GeometryProxy) -> CGRect{
+        return foundString.boundingBox.toImageCoordinates(proxy.size, origin: .upperLeft)
+    }
+    
+    
+    func getStroke(foundString: FoundString) -> Color{
+        print(foundString.id)
+        switch foundString.macro {
+        case "calories":
+            return .blue
+        case "fat":
+            return .orange
+        case "carbs":
+            return.green
+        case "protein":
+            return .purple
+        default:
+            return .red
         }
     }
 }

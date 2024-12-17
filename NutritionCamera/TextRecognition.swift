@@ -107,14 +107,6 @@ class OCR {
                 foundString.distanceToProtein = calculateDistance(from: protein.cgRect, to: foundString.boundingBox.cgRect)
             }
             
-            
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            
-            
-            let data = try! encoder.encode(foundString)
-            print(String(data: data, encoding: .utf8)!)
-            
             foundStringsWithMacros.append(foundString)
             
             
@@ -151,6 +143,8 @@ struct Box: Shape {
     }
 
     func path(in rect: CGRect) -> Path {
+        print("PATH")
+        print(rect.size)
         let rect = normalizedRect.toImageCoordinates(rect.size, origin: .upperLeft)
         return Path(rect)
     }
