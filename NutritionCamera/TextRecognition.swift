@@ -143,8 +143,6 @@ struct Box: Shape {
     }
 
     func path(in rect: CGRect) -> Path {
-        print("PATH")
-        print(rect.size)
         let rect = normalizedRect.toImageCoordinates(rect.size, origin: .upperLeft)
         return Path(rect)
     }

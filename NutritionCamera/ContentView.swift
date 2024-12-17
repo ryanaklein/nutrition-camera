@@ -30,7 +30,7 @@ struct ContentView: View {
         } else {
             VStack {
                 if hasPhoto {
-                    ImageView(showCamera: $showCamera, imageData: $imageData)
+                    ImageView(showCamera: $showCamera, hasPhoto: $hasPhoto, imageData: $imageData)
                 } else if showCamera {
                     CameraUI(showCamera: $showCamera, showAccessError: $showAccessError, hasPhoto: $hasPhoto, imageData: $imageData)
                 }

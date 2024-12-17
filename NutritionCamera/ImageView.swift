@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ImageView: View {
     @Binding var showCamera: Bool
+    @Binding var hasPhoto: Bool
     @Binding var imageData: Data?
 
     @State private var imageOCR = OCR()
@@ -18,6 +19,9 @@ struct ImageView: View {
     @State private var selectedLanguage = Locale.Language(identifier: "en-US")
     @State private var currentZoom = 0.0
     @State private var totalZoom = 1.0
+    
+    @State private var saving = false
+    @State private var saved = false
 
     var recognitionLevels = ["Accurate", "Fast"]
 
@@ -42,6 +46,7 @@ struct ImageView: View {
                             .clipShape(Capsule())
                             .onTapGesture {
                                 showCamera = true
+                                hasPhoto = false
                             }
                     }
                     Spacer()
@@ -99,35 +104,55 @@ struct ImageView: View {
                 }
                 .pickerStyle(.segmented)
                 
-                Button("Send"){
-                    let encoder = JSONEncoder()
-                    
-                    let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
-                    
-                    let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/hello/")!
-                    var request = URLRequest(url: url)
-                    request.httpMethod = "POST"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    
-                    let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
-                        if let error = error {
-                            print ("error: \(error)")
-                            return
-                        }
-                        guard let response = response as? HTTPURLResponse,
-                            (200...299).contains(response.statusCode) else {
-                            print ("server error")
-                            return
-                        }
-                        if let mimeType = response.mimeType,
-                            mimeType == "application/json",
-                            let data = data,
-                            let dataString = String(data: data, encoding: .utf8) {
-                            print ("got data: \(dataString)")
-                        }
+                if saved {
+                    Button("Scan Again"){
+                        showCamera = true
+                        hasPhoto = false
                     }
-                    task.resume()
+                } else {
+                    Button("Send"){
+                        saving = true
+                        let encoder = JSONEncoder()
+                        
+                        let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
+                        
+                        let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/hello/")!
+                        var request = URLRequest(url: url)
+                        request.httpMethod = "POST"
+                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                        
+                        let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
+                            if let error = error {
+                                saving = false
+                                saved = true
+                                print ("error: \(error)")
+                                return
+                            }
+                            guard let response = response as? HTTPURLResponse,
+                                  (200...299).contains(response.statusCode) else {
+                                saving = false
+                                saved = true
+                                print ("server error")
+                                return
+                            }
+                            if let mimeType = response.mimeType,
+                               mimeType == "application/json",
+                               let data = data,
+                               let dataString = String(data: data, encoding: .utf8) {
+                                print ("got data: \(dataString)")
+                            }
+                            saving = false
+                            saved = true
+                        }
+                        task.resume()
+                    }.opacity(saving ? 0 : 1)
+                        .overlay{
+                            if saving {
+                                ProgressView()
+                            }
+                        }
                 }
+                
 
             }
             /// Initially perform the request, and then perform the request when changes occur to the request settings.
@@ -178,7 +203,6 @@ struct ButtonBox: View {
     
     
     func getStroke(foundString: FoundString) -> Color{
-        print(foundString.id)
         switch foundString.macro {
         case "calories":
             return .blue
