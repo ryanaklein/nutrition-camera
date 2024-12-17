@@ -116,7 +116,7 @@ struct ImageView: View {
                         
                         let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
                         
-                        let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/hello/")!
+                        let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/upload/")!
                         var request = URLRequest(url: url)
                         request.httpMethod = "POST"
                         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
