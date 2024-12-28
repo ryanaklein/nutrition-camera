@@ -16,23 +16,30 @@ struct ContentView: View {
     @State private var showAccessError: Bool = false
 
     var body: some View {
-        if showAccessError {
-            VStack {
-                Image(systemName: "lock.trianglebadge.exclamationmark.fill")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.gray)
-
-                Text("This app needs access to the camera for it to function properly. You can update this at:")
-                Text("Settings > Privacy and Security > Camera")
+        TabView {
+            Tab("Data", systemImage: "opticaldiscdrive"){
+                NutritionLabelListView()
             }
-        } else {
-            VStack {
-                if hasPhoto {
-                    ImageView(showCamera: $showCamera, hasPhoto: $hasPhoto, imageData: $imageData)
-                } else if showCamera {
-                    CameraUI(showCamera: $showCamera, showAccessError: $showAccessError, hasPhoto: $hasPhoto, imageData: $imageData)
+            Tab("Camera", systemImage: "camera"){
+                if showAccessError {
+                    VStack {
+                        Image(systemName: "lock.trianglebadge.exclamationmark.fill")
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(.gray)
+                        
+                        Text("This app needs access to the camera for it to function properly. You can update this at:")
+                        Text("Settings > Privacy and Security > Camera")
+                    }
+                } else {
+                    VStack {
+                        if hasPhoto {
+                            ImageView(showCamera: $showCamera, hasPhoto: $hasPhoto, imageData: $imageData)
+                        } else if showCamera {
+                            CameraUI(showCamera: $showCamera, showAccessError: $showAccessError, hasPhoto: $hasPhoto, imageData: $imageData)
+                        }
+                    }
                 }
             }
         }

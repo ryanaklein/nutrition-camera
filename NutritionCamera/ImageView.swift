@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ImageView: View {
+    
+    @Environment(\.modelContext) private var context
+    
     @Binding var showCamera: Bool
     @Binding var hasPhoto: Bool
     @Binding var imageData: Data?
@@ -110,41 +113,8 @@ struct ImageView: View {
                         hasPhoto = false
                     }
                 } else {
-                    Button("Send"){
-                        saving = true
-                        let encoder = JSONEncoder()
-                        
-                        let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
-                        
-                        let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/upload/")!
-                        var request = URLRequest(url: url)
-                        request.httpMethod = "POST"
-                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                        
-                        let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
-                            if let error = error {
-                                saving = false
-                                saved = true
-                                print ("error: \(error)")
-                                return
-                            }
-                            guard let response = response as? HTTPURLResponse,
-                                  (200...299).contains(response.statusCode) else {
-                                saving = false
-                                saved = true
-                                print ("server error")
-                                return
-                            }
-                            if let mimeType = response.mimeType,
-                               mimeType == "application/json",
-                               let data = data,
-                               let dataString = String(data: data, encoding: .utf8) {
-                                print ("got data: \(dataString)")
-                            }
-                            saving = false
-                            saved = true
-                        }
-                        task.resume()
+                    Button("Save"){
+                        saveData()
                     }.opacity(saving ? 0 : 1)
                         .overlay{
                             if saving {
@@ -165,12 +135,52 @@ struct ImageView: View {
     }
     
     func handleTapGesture(id: UUID) {
-        
-        
-        
         if let index = imageOCR.foundStringsWithMacros.firstIndex(where: {$0.id == id}) {
-            imageOCR.foundStringsWithMacros[index].macro = selectedMacro
+            imageOCR.foundStringsWithMacros[index].label = selectedMacro
         }
+    }
+    
+    func saveData() {
+        
+        context.insert(NutritionLabel(image: imageData!, foundStringList: imageOCR.foundStringsWithMacros))
+        
+    }
+    
+    func sendData() {
+        saving = true
+        let encoder = JSONEncoder()
+        
+        let data = try! encoder.encode(imageOCR.foundStringsWithMacros)
+        
+        let url = URL(string: "https://rtzetktjl3.execute-api.us-east-1.amazonaws.com/Prod/upload/")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
+            if let error = error {
+                saving = false
+                saved = true
+                print ("error: \(error)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                saving = false
+                saved = true
+                print ("server error")
+                return
+            }
+            if let mimeType = response.mimeType,
+               mimeType == "application/json",
+               let data = data,
+               let dataString = String(data: data, encoding: .utf8) {
+                print ("got data: \(dataString)")
+            }
+            saving = false
+            saved = true
+        }
+        task.resume()
     }
 }
 
@@ -203,7 +213,7 @@ struct ButtonBox: View {
     
     
     func getStroke(foundString: FoundString) -> Color{
-        switch foundString.macro {
+        switch foundString.label {
         case "calories":
             return .blue
         case "fat":
