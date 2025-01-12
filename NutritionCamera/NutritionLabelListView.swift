@@ -11,6 +11,7 @@ import SwiftData
 struct NutritionLabelListView: View {
     
     @Query var nutritionLabelList: [NutritionLabel]
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack{
@@ -23,11 +24,18 @@ struct NutritionLabelListView: View {
                             .frame(width: 100, height: 133, alignment: .topLeading)
                     }
                 }
+                .onDelete(perform: removeNutritionLabel)
             }
             .navigationDestination(for: NutritionLabel.self){ nutritionLabel in
                 FoundStringListView(foundStringList: nutritionLabel.foundStringList)
                 
             }
+        }
+    }
+    
+    private func removeNutritionLabel(at indexSet: IndexSet){
+        for index in indexSet {
+            modelContext.delete(nutritionLabelList[index])
         }
     }
 }

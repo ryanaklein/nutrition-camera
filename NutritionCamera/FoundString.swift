@@ -14,7 +14,14 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
     var id: UUID
     var string: String
     var fullLine: String
-    var boundingBox: NormalizedRect
+    var boundingBoxX: CGFloat
+    var boundingBoxY: CGFloat
+    var boundingBoxWidth: CGFloat
+    var boundingBoxHeight: CGFloat
+    
+    var boundingBox: NormalizedRect{
+        return NormalizedRect(x: boundingBoxX, y: boundingBoxY, width: boundingBoxWidth, height: boundingBoxHeight)
+    }
     
     var isInCalorieString: Bool {
         return fullLine.contains(caseInsensitiveRegex(matchString: "calories"))
@@ -50,7 +57,10 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
         self.id = id
         self.string = string
         self.fullLine = fullLine
-        self.boundingBox = boundingBox
+        self.boundingBoxX = boundingBox.origin.x
+        self.boundingBoxY = boundingBox.origin.y
+        self.boundingBoxWidth = boundingBox.width
+        self.boundingBoxHeight = boundingBox.height
         self.distanceToCalories = distanceToCalories
         self.slopeToCalories = slopeToCalories
         self.distanceToFat = distanceToFat

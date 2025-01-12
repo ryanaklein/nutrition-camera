@@ -15,7 +15,11 @@ struct FoundStringListView: View {
     var body: some View {
         List{
             ForEach(foundStringList) { foundString in
-                Text(foundString.string)
+                VStack{
+                    Text(foundString.string)
+                    Text(foundString.label)
+                }
+                
             }
         }
     }

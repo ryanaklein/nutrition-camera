@@ -13,7 +13,7 @@ struct NutritionCameraApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [NutritionLabel.self], inMemory: true)
+                .modelContainer(for: [NutritionLabel.self])
         }
     }
 }
