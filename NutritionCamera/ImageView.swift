@@ -12,10 +12,9 @@ struct ImageView: View {
     
     @Environment(\.modelContext) private var context
     
-    @Binding var showCamera: Bool
-    @Binding var hasPhoto: Bool
-    @Binding var imageData: Data?
-
+    let imageData: Data
+    @Binding var path: NavigationPath
+ 
     @State private var imageOCR = OCR()
     @State private var languageCorrection = false
     @State private var selectedMacro = "calories"
@@ -31,12 +30,12 @@ struct ImageView: View {
     /// Watch for changes to the request settings.
     var settingChanges: [String] {[
         languageCorrection.description,
-        imageData!.description,
+        imageData.description,
         selectedLanguage.maximalIdentifier
     ]}
 
     var body: some View {
-        NavigationStack {
+        
             VStack {
                 HStack {
                     Spacer()
@@ -48,8 +47,7 @@ struct ImageView: View {
                             .foregroundStyle(.white)
                             .clipShape(Capsule())
                             .onTapGesture {
-                                showCamera = true
-                                hasPhoto = false
+                                
                             }
                     }
                     Spacer()
@@ -65,7 +63,7 @@ struct ImageView: View {
                 }
 
                 /// Convert the image data to a `UIImage`, and display it in an `Image` view.
-                if let uiImage = UIImage(data: imageData!) {
+                if let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
@@ -101,20 +99,21 @@ struct ImageView: View {
 
                 /// Select the recognition level — fast or accurate.
                 Picker("Selected Macro", selection: $selectedMacro) {
-                    ForEach(["calories", "fat", "carbs", "protein"], id: \.self) {
+                    ForEach(["calories", "fat", "carbs", "protein", "none"], id: \.self) {
                         Text($0)
                     }
                 }
                 .pickerStyle(.segmented)
+                .padding()
                 
                 if saved {
                     Button("Scan Again"){
-                        showCamera = true
-                        hasPhoto = false
+                        path.removeLast()
                     }
                 } else {
                     Button("Save"){
                         saveData()
+                        path.removeLast()
                     }.opacity(saving ? 0 : 1)
                         .overlay{
                             if saving {
@@ -128,10 +127,10 @@ struct ImageView: View {
             /// Initially perform the request, and then perform the request when changes occur to the request settings.
             .onChange(of: settingChanges, initial: true) {
                 Task {
-                    try await imageOCR.performOCR(imageData: imageData!)
+                    try await imageOCR.performOCR(imageData: imageData)
                 }
             }
-        }
+        
     }
     
     func handleTapGesture(id: UUID) {
@@ -142,7 +141,7 @@ struct ImageView: View {
     
     func saveData() {
         
-        context.insert(NutritionLabel(image: imageData!, foundStringList: imageOCR.foundStringsWithMacros))
+        context.insert(NutritionLabel(image: imageData, foundStringList: imageOCR.foundStringsWithMacros))
         
     }
     

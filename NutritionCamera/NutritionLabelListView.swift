@@ -14,22 +14,20 @@ struct NutritionLabelListView: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        NavigationStack{
-            List{
-                ForEach(nutritionLabelList) { nutritionLabel in
-                    NavigationLink(value: nutritionLabel){
-                        Image(uiImage: UIImage(data: nutritionLabel.image)!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 133, alignment: .topLeading)
-                    }
+        List{
+            ForEach(nutritionLabelList) { nutritionLabel in
+                NavigationLink(value: nutritionLabel){
+                    Image(uiImage: UIImage(data: nutritionLabel.image)!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 133, alignment: .topLeading)
                 }
-                .onDelete(perform: removeNutritionLabel)
             }
-            .navigationDestination(for: NutritionLabel.self){ nutritionLabel in
-                FoundStringListView(foundStringList: nutritionLabel.foundStringList)
-                
-            }
+            .onDelete(perform: removeNutritionLabel)
+        }
+        .navigationDestination(for: NutritionLabel.self){ nutritionLabel in
+            FoundStringListView(foundStringList: nutritionLabel.foundStringList)
+            
         }
     }
     

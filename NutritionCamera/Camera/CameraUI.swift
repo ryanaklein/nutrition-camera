@@ -13,10 +13,7 @@ struct CameraUI: View {
     @State var camera = Camera()
     @State var didSetup = Bool()
 
-    @Binding var showCamera: Bool
-    @Binding var showAccessError: Bool
-    @Binding var hasPhoto: Bool
-    @Binding var imageData: Data?
+    @Binding var path: NavigationPath
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -27,18 +24,18 @@ struct CameraUI: View {
                         didSetup = camera.setup()
                     /// If the app doesn't have access, dismiss the camera and display an error.
                     } else {
-                        showAccessError = true
-                        showCamera = false
+                        path.append("error")
                     }
                     
                     if !didSetup {
                         print("Camera setup failed.")
-                        showCamera = false
+                        path.append("error")
                     }
                 }
                 .ignoresSafeArea()
 
             cameraControls
+            
         }
     }
 
@@ -62,9 +59,9 @@ struct CameraUI: View {
         /// Show the `Done` button after the user captures a photo.
         } else {
             Button("Done") {
-                imageData = camera.photoData
-                showCamera = false
-                hasPhoto = true
+                let imageDataContainer = ImageDataContainer(imageData: camera.photoData!)
+                path = NavigationPath()
+                path.append(imageDataContainer)
             }
             .buttonStyle(DoneButtonStyle())
         }
@@ -88,5 +85,9 @@ struct CaptureButtonStyle: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
             .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
     }
+}
+
+struct ImageDataContainer: Hashable {
+    let imageData: Data
 }
 
