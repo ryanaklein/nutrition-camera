@@ -11,13 +11,14 @@ import SwiftData
 
 @Model
 class FoundString: Encodable, BoundingBoxProviding, Identifiable{
-    var id: UUID
-    var string: String
-    var fullLine: String
-    var boundingBoxX: CGFloat
-    var boundingBoxY: CGFloat
-    var boundingBoxWidth: CGFloat
-    var boundingBoxHeight: CGFloat
+    var id: UUID?
+    var string = ""
+    var fullLine = ""
+    var boundingBoxX = 0.0
+    var boundingBoxY = 0.0
+    var boundingBoxWidth = 0.0
+    var boundingBoxHeight = 0.0
+    var nutritionLabel: NutritionLabel?
     
     var boundingBox: NormalizedRect{
         return NormalizedRect(x: boundingBoxX, y: boundingBoxY, width: boundingBoxWidth, height: boundingBoxHeight)

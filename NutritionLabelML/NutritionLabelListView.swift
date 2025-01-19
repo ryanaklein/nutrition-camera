@@ -17,7 +17,7 @@ struct NutritionLabelListView: View {
         List{
             ForEach(nutritionLabelList) { nutritionLabel in
                 NavigationLink(value: nutritionLabel){
-                    Image(uiImage: UIImage(data: nutritionLabel.image!)!)
+                    Image(nsImage: NSImage(data: nutritionLabel.image!)!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 133, alignment: .topLeading)
@@ -41,3 +41,4 @@ struct NutritionLabelListView: View {
 #Preview {
     NutritionLabelListView()
 }
+

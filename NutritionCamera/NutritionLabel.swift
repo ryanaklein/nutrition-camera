@@ -11,8 +11,8 @@ import SwiftData
 @Model
 class NutritionLabel{
     
-    var image: Data
-    @Relationship(deleteRule: .cascade) var foundStringList: [FoundString]
+    var image: Data?
+    @Relationship(deleteRule: .cascade, inverse: \FoundString.nutritionLabel) var foundStringList: [FoundString]? = []
     
     init(image: Data, foundStringList: [FoundString]) {
         self.image = image

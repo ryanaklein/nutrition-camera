@@ -71,7 +71,7 @@ struct ImageView: View {
                             ForEach(imageOCR.foundStringsWithMacros) { observation in
                                 
                                 ButtonBox(foundString: observation, image: uiImage){
-                                    handleTapGesture(id: observation.id)
+                                    handleTapGesture(id: observation.id!)
                                 }
                                 
                             }

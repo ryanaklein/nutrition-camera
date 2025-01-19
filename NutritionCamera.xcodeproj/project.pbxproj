@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
+		6E4B6D832D3C639A000C454D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E4B6D712D3C6399000C454D;
+			remoteInfo = NutritionLabelML;
+		};
+		6E4B6D8D2D3C639A000C454D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E4B6D712D3C6399000C454D;
+			remoteInfo = NutritionLabelML;
+		};
 		6ECC22C42CE8F2A300D5E865 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6ECC22AB2CE8F2A200D5E865 /* Project object */;
@@ -24,12 +38,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E4B6D722D3C6399000C454D /* NutritionLabelML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionLabelML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4B6D822D3C639A000C454D /* NutritionLabelMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionLabelMLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4B6D8C2D3C639A000C454D /* NutritionLabelMLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionLabelMLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ECC22B32CE8F2A200D5E865 /* NutritionCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutritionCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ECC22C32CE8F2A300D5E865 /* NutritionCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ECC22CD2CE8F2A300D5E865 /* NutritionCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6E4B6D9E2D3C640E000C454D /* Exceptions for "NutritionCamera" folder in "NutritionLabelML" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FoundString.swift,
+				FoundStringListView.swift,
+				NutritionLabel.swift,
+			);
+			target = 6E4B6D712D3C6399000C454D /* NutritionLabelML */;
+		};
 		6ECC22E72CE8F8DE00D5E865 /* Exceptions for "NutritionCamera" folder in "NutritionCamera" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -40,10 +66,26 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		6E4B6D732D3C6399000C454D /* NutritionLabelML */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionLabelML;
+			sourceTree = "<group>";
+		};
+		6E4B6D852D3C639A000C454D /* NutritionLabelMLTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionLabelMLTests;
+			sourceTree = "<group>";
+		};
+		6E4B6D8F2D3C639A000C454D /* NutritionLabelMLUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NutritionLabelMLUITests;
+			sourceTree = "<group>";
+		};
 		6ECC22B52CE8F2A200D5E865 /* NutritionCamera */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				6ECC22E72CE8F8DE00D5E865 /* Exceptions for "NutritionCamera" folder in "NutritionCamera" target */,
+				6E4B6D9E2D3C640E000C454D /* Exceptions for "NutritionCamera" folder in "NutritionLabelML" target */,
 			);
 			path = NutritionCamera;
 			sourceTree = "<group>";
@@ -61,6 +103,27 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6E4B6D6F2D3C6399000C454D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D7F2D3C639A000C454D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D892D3C639A000C454D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6ECC22B02CE8F2A200D5E865 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +154,9 @@
 				6ECC22B52CE8F2A200D5E865 /* NutritionCamera */,
 				6ECC22C62CE8F2A300D5E865 /* NutritionCameraTests */,
 				6ECC22D02CE8F2A300D5E865 /* NutritionCameraUITests */,
+				6E4B6D732D3C6399000C454D /* NutritionLabelML */,
+				6E4B6D852D3C639A000C454D /* NutritionLabelMLTests */,
+				6E4B6D8F2D3C639A000C454D /* NutritionLabelMLUITests */,
 				6ECC22B42CE8F2A200D5E865 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +167,9 @@
 				6ECC22B32CE8F2A200D5E865 /* NutritionCamera.app */,
 				6ECC22C32CE8F2A300D5E865 /* NutritionCameraTests.xctest */,
 				6ECC22CD2CE8F2A300D5E865 /* NutritionCameraUITests.xctest */,
+				6E4B6D722D3C6399000C454D /* NutritionLabelML.app */,
+				6E4B6D822D3C639A000C454D /* NutritionLabelMLTests.xctest */,
+				6E4B6D8C2D3C639A000C454D /* NutritionLabelMLUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +177,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6E4B6D712D3C6399000C454D /* NutritionLabelML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E4B6D9A2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelML" */;
+			buildPhases = (
+				6E4B6D6E2D3C6399000C454D /* Sources */,
+				6E4B6D6F2D3C6399000C454D /* Frameworks */,
+				6E4B6D702D3C6399000C454D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6E4B6D732D3C6399000C454D /* NutritionLabelML */,
+			);
+			name = NutritionLabelML;
+			packageProductDependencies = (
+			);
+			productName = NutritionLabelML;
+			productReference = 6E4B6D722D3C6399000C454D /* NutritionLabelML.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E4B6D812D3C639A000C454D /* NutritionLabelMLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E4B6D9B2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelMLTests" */;
+			buildPhases = (
+				6E4B6D7E2D3C639A000C454D /* Sources */,
+				6E4B6D7F2D3C639A000C454D /* Frameworks */,
+				6E4B6D802D3C639A000C454D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E4B6D842D3C639A000C454D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6E4B6D852D3C639A000C454D /* NutritionLabelMLTests */,
+			);
+			name = NutritionLabelMLTests;
+			packageProductDependencies = (
+			);
+			productName = NutritionLabelMLTests;
+			productReference = 6E4B6D822D3C639A000C454D /* NutritionLabelMLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6E4B6D8B2D3C639A000C454D /* NutritionLabelMLUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E4B6D9C2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelMLUITests" */;
+			buildPhases = (
+				6E4B6D882D3C639A000C454D /* Sources */,
+				6E4B6D892D3C639A000C454D /* Frameworks */,
+				6E4B6D8A2D3C639A000C454D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E4B6D8E2D3C639A000C454D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6E4B6D8F2D3C639A000C454D /* NutritionLabelMLUITests */,
+			);
+			name = NutritionLabelMLUITests;
+			packageProductDependencies = (
+			);
+			productName = NutritionLabelMLUITests;
+			productReference = 6E4B6D8C2D3C639A000C454D /* NutritionLabelMLUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6ECC22B22CE8F2A200D5E865 /* NutritionCamera */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6ECC22D72CE8F2A300D5E865 /* Build configuration list for PBXNativeTarget "NutritionCamera" */;
@@ -183,9 +320,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					6E4B6D712D3C6399000C454D = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6E4B6D812D3C639A000C454D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6E4B6D712D3C6399000C454D;
+					};
+					6E4B6D8B2D3C639A000C454D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6E4B6D712D3C6399000C454D;
+					};
 					6ECC22B22CE8F2A200D5E865 = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -216,11 +364,35 @@
 				6ECC22B22CE8F2A200D5E865 /* NutritionCamera */,
 				6ECC22C22CE8F2A300D5E865 /* NutritionCameraTests */,
 				6ECC22CC2CE8F2A300D5E865 /* NutritionCameraUITests */,
+				6E4B6D712D3C6399000C454D /* NutritionLabelML */,
+				6E4B6D812D3C639A000C454D /* NutritionLabelMLTests */,
+				6E4B6D8B2D3C639A000C454D /* NutritionLabelMLUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6E4B6D702D3C6399000C454D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D802D3C639A000C454D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D8A2D3C639A000C454D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6ECC22B12CE8F2A200D5E865 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +417,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6E4B6D6E2D3C6399000C454D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D7E2D3C639A000C454D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E4B6D882D3C639A000C454D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6ECC22AF2CE8F2A200D5E865 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +462,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6E4B6D842D3C639A000C454D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E4B6D712D3C6399000C454D /* NutritionLabelML */;
+			targetProxy = 6E4B6D832D3C639A000C454D /* PBXContainerItemProxy */;
+		};
+		6E4B6D8E2D3C639A000C454D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E4B6D712D3C6399000C454D /* NutritionLabelML */;
+			targetProxy = 6E4B6D8D2D3C639A000C454D /* PBXContainerItemProxy */;
+		};
 		6ECC22C52CE8F2A300D5E865 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6ECC22B22CE8F2A200D5E865 /* NutritionCamera */;
@@ -282,6 +485,138 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		6E4B6D942D3C639A000C454D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutritionLabelML/NutritionLabelML.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutritionLabelML/Preview Content\"";
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelML;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6E4B6D952D3C639A000C454D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutritionLabelML/NutritionLabelML.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NutritionLabelML/Preview Content\"";
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelML;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6E4B6D962D3C639A000C454D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelMLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutritionLabelML.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutritionLabelML";
+			};
+			name = Debug;
+		};
+		6E4B6D972D3C639A000C454D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelMLTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NutritionLabelML.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NutritionLabelML";
+			};
+			name = Release;
+		};
+		6E4B6D982D3C639A000C454D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelMLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NutritionLabelML;
+			};
+			name = Debug;
+		};
+		6E4B6D992D3C639A000C454D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DHH36M8H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ryanklein.NutritionLabelMLUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NutritionLabelML;
+			};
+			name = Release;
+		};
 		6ECC22D52CE8F2A300D5E865 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -406,6 +741,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutritionCamera/NutritionCamera.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutritionCamera/Preview Content\"";
@@ -438,6 +774,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NutritionCamera/NutritionCamera.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NutritionCamera/Preview Content\"";
@@ -540,6 +877,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6E4B6D9A2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E4B6D942D3C639A000C454D /* Debug */,
+				6E4B6D952D3C639A000C454D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E4B6D9B2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelMLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E4B6D962D3C639A000C454D /* Debug */,
+				6E4B6D972D3C639A000C454D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E4B6D9C2D3C639A000C454D /* Build configuration list for PBXNativeTarget "NutritionLabelMLUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E4B6D982D3C639A000C454D /* Debug */,
+				6E4B6D992D3C639A000C454D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6ECC22AE2CE8F2A200D5E865 /* Build configuration list for PBXProject "NutritionCamera" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

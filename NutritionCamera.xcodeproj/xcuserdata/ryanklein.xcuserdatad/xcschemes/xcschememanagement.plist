@@ -9,6 +9,44 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>NutritionLabelML.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6E4B6D712D3C6399000C454D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E4B6D812D3C639A000C454D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E4B6D8B2D3C639A000C454D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6ECC22B22CE8F2A200D5E865</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6ECC22C22CE8F2A300D5E865</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6ECC22CC2CE8F2A300D5E865</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>
