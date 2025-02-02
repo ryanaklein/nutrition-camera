@@ -10,7 +10,7 @@ import Vision
 import SwiftData
 
 @Model
-class FoundString: Encodable, BoundingBoxProviding, Identifiable{
+class FoundString: Encodable, Identifiable{
     var id: UUID?
     var string = ""
     var fullLine = ""
@@ -20,7 +20,7 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
     var boundingBoxHeight = 0.0
     var nutritionLabel: NutritionLabel?
     
-    var boundingBox: NormalizedRect{
+    var normalizedRect: NormalizedRect{
         return NormalizedRect(x: boundingBoxX, y: boundingBoxY, width: boundingBoxWidth, height: boundingBoxHeight)
     }
     
@@ -33,28 +33,84 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
     }
     
     var isInCarbsString: Bool {
-        return fullLine.contains(caseInsensitiveRegex(matchString: "total carbs"))
+        return fullLine.contains(caseInsensitiveRegex(matchString: "total carb"))
     }
     
     var isInProteinString: Bool {
         return fullLine.contains(caseInsensitiveRegex(matchString: "protein"))
     }
     
+    var isGrams: Bool {
+        string.contains(try! Regex("\\d+g"))
+    }
+    
+    var isUnitless: Bool{
+        string.contains(try! Regex("^\\d+$"))
+    }
+    
     var label: String = "none"
     
-    var distanceToCalories: Float?
-    var slopeToCalories: Float?
+    var distanceToCalories: Float? {
+        if let calorieRect = nutritionLabel?.getMacroTextForType("calories")?.normalizedRect?.cgRect {
+            return calculateDistance(from: normalizedRect.cgRect, to: calorieRect)
+        }
+        
+        return nil
+    }
+    var slopeToCalories: Float? {
+        if let calorieRect = nutritionLabel?.getMacroTextForType("calories")?.normalizedRect?.cgRect {
+            return calculateSlope(from: normalizedRect.cgRect, to: calorieRect)
+        }
+        
+        return nil
+    }
     
-    var distanceToFat: Float?
-    var slopeToFat: Float?
+    var distanceToFat: Float? {
+        if let fatRect = nutritionLabel?.getMacroTextForType("fat")?.normalizedRect?.cgRect {
+            return calculateDistance(from: normalizedRect.cgRect, to: fatRect)
+        }
+        
+        return nil
+    }
+    var slopeToFat: Float? {
+        if let fatRect = nutritionLabel?.getMacroTextForType("fat")?.normalizedRect?.cgRect {
+            return calculateSlope(from: normalizedRect.cgRect, to: fatRect)
+        }
+        
+        return nil
+    }
     
-    var distanceToCarbs: Float?
-    var slopeToCarbs: Float?
+    var distanceToCarbs: Float? {
+        if let carbsRect = nutritionLabel?.getMacroTextForType("carbs")?.normalizedRect?.cgRect {
+            return calculateDistance(from: normalizedRect.cgRect, to: carbsRect)
+        }
+        
+        return nil
+    }
+    var slopeToCarbs: Float? {
+        if let carbsRect = nutritionLabel?.getMacroTextForType("carbs")?.normalizedRect?.cgRect {
+            return calculateSlope(from: normalizedRect.cgRect, to: carbsRect)
+        }
+        
+        return nil
+    }
     
-    var distanceToProtein: Float?
-    var slopeToProtein: Float?
+    var distanceToProtein: Float? {
+        if let proteinRect = nutritionLabel?.getMacroTextForType("protein")?.normalizedRect?.cgRect {
+            return calculateDistance(from: normalizedRect.cgRect, to: proteinRect)
+        }
+        
+        return nil
+    }
+    var slopeToProtein: Float? {
+        if let proteinRect = nutritionLabel?.getMacroTextForType("protein")?.normalizedRect?.cgRect {
+            return calculateSlope(from: normalizedRect.cgRect, to: proteinRect)
+        }
+        
+        return nil
+    }
     
-    init(id: UUID, string: String, fullLine: String, boundingBox: NormalizedRect, distanceToCalories: Float? = nil, slopeToCalories: Float? = nil, distanceToFat: Float? = nil, slopeToFat: Float? = nil, distanceToCarbs: Float? = nil, slopeToCarbs: Float? = nil, distanceToProtein: Float? = nil, slopeToProtein: Float? = nil) {
+    init(id: UUID, string: String, fullLine: String, boundingBox: NormalizedRect) {
         self.id = id
         self.string = string
         self.fullLine = fullLine
@@ -62,14 +118,6 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
         self.boundingBoxY = boundingBox.origin.y
         self.boundingBoxWidth = boundingBox.width
         self.boundingBoxHeight = boundingBox.height
-        self.distanceToCalories = distanceToCalories
-        self.slopeToCalories = slopeToCalories
-        self.distanceToFat = distanceToFat
-        self.slopeToFat = slopeToFat
-        self.distanceToCarbs = distanceToCarbs
-        self.slopeToCarbs = slopeToCarbs
-        self.distanceToProtein = distanceToProtein
-        self.slopeToProtein = slopeToProtein
     }
     
     func encode(to encoder: any Encoder) throws {
@@ -79,6 +127,21 @@ class FoundString: Encodable, BoundingBoxProviding, Identifiable{
     
     private func caseInsensitiveRegex(matchString: String) -> Regex<Substring>{
         return try! Regex("(?i)\(matchString)")
+    }
+    
+    
+    func calculateDistance(from: CGRect, to: CGRect) -> Float{
+        let squaredDistance = (from.midX - to.midX) * (from.midX - to.midX) + (from.midY - to.midY) * (from.midY - to.midY)
+        return Float(sqrt(squaredDistance))
+    }
+    
+    func calculateSlope(from: CGRect, to:CGRect) -> Float{
+        
+        let slope = Double((from.midY - to.midY)/(from.midX - to.midX))
+        
+        let normalizedSlope = atan(slope)/(Double.pi/2)
+        
+        return Float(normalizedSlope)
     }
     
     
