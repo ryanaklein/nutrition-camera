@@ -70,14 +70,14 @@ struct Trainer {
             for foundString in nutritionLabel.foundStringList! {
                 
                 
-//                if noneCount > 10 && foundString.label == "none" {
-//                    continue
-//                }
-//                
-//                if foundString.label == "none"{
-//                    noneCount += 1
-//                }
-//            
+                if noneCount > 2 && foundString.label == "none" {
+                    continue
+                }
+                
+                if foundString.label == "none"{
+                    noneCount += 1
+                }
+            
                 
                 
                 tempLabelList.append(foundString.label)

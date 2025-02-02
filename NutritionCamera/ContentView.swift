@@ -27,7 +27,7 @@ struct ContentView: View {
                             Image(systemName: "plus")
                         }
                     }
-                    .navigationTitle("Captured Labels")
+                    .navigationTitle("Training Data")
                     .navigationDestination(for: String.self){
                         value in
                         if value == "error"{
