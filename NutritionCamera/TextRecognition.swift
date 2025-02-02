@@ -15,6 +15,7 @@ class OCR {
     private var observations = [RecognizedTextObservation]()
     private var foundStrings: [FoundString] = []
     var nutritionLabel: NutritionLabel?
+    var ocrComplete = false
     
 
     /// The Vision request.
@@ -87,6 +88,7 @@ class OCR {
             }
             
         }
+        ocrComplete = true
     }
     
     func getBoundingBox(text: String, recognizedText: RecognizedText) -> NormalizedRect?{

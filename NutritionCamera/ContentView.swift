@@ -15,7 +15,13 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             NavigationStack(path: $path) {
-                NutritionLabelListView()
+                VStack{
+                    NutritionLabelListView()
+                    NavigationLink(value: "predict"){
+                        Text("Predict")
+                    }
+                    .padding(20)
+                }
                     .toolbar{
                         NavigationLink(value: "camera") {
                             Image(systemName: "plus")
@@ -36,8 +42,8 @@ struct ContentView: View {
                                 Text("Settings > Privacy and Security > Camera")
                             }
                         }
-                        else if value == "camera"{
-                            CameraUI(path: $path)
+                        else if value == "camera" || value == "predict"{
+                            CameraUI(path: $path, mode: value)
                         }
                         else {
                             EmptyView()
@@ -45,7 +51,11 @@ struct ContentView: View {
                     }
                     .navigationDestination(for: ImageDataContainer.self){
                         imageDataContainer in
-                        ImageView(imageData: imageDataContainer.imageData, path: $path)
+                        if imageDataContainer.mode == "camera"{
+                            ImageView(imageData: imageDataContainer.imageData, path: $path)
+                        } else{
+                            PredictionView(imageData: imageDataContainer.imageData, path: $path)
+                        }
                     }
             }
         }

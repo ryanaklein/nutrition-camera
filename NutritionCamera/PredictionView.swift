@@ -1,14 +1,14 @@
 //
-//  ImageView.swift
+//  Prediction.swift
 //  NutritionCamera
 //
-//  Created by Ryan Klein on 12/1/24.
+//  Created by Ryan Klein on 2/2/25.
 //  Originally taken from https://developer.apple.com/documentation/vision/locating-and-displaying-recognized-text
 //
 
 import SwiftUI
 
-struct ImageView: View {
+struct PredictionView: View {
     
     @Environment(\.modelContext) private var context
     
@@ -17,13 +17,21 @@ struct ImageView: View {
     
     @State private var imageOCR = OCR()
     @State private var languageCorrection = false
-    @State private var selectedMacro = "calories"
     @State private var selectedLanguage = Locale.Language(identifier: "en-US")
     @State private var currentZoom = 0.0
     @State private var totalZoom = 1.0
     
     @State private var saving = false
     @State private var saved = false
+    
+    @State private var predictions = [
+        "calories": Prediction(foundString: nil, confidence: 0.0),
+        "fat": Prediction(foundString: nil, confidence: 0.0),
+        "carbs": Prediction(foundString: nil, confidence: 0.0),
+        "protein": Prediction(foundString: nil, confidence: 0.0)
+    ]
+    
+    @State private var foundStringPredictions: [FoundString] = []
     
     var recognitionLevels = ["Accurate", "Fast"]
     
@@ -44,12 +52,9 @@ struct ImageView: View {
                     .resizable()
                     .scaledToFit()
                     .overlay {
-                        ForEach(imageOCR.nutritionLabel?.foundStringList ?? []) { observation in
+                        ForEach(foundStringPredictions) { observation in
                             
-                            ButtonBox(foundString: observation, image: uiImage){
-                                handleTapGesture(id: observation.id!)
-                            }
-                            
+                            PredictionBox(foundString: observation, image: uiImage)
                         }
                     }
                     .scaleEffect(currentZoom + totalZoom)
@@ -73,32 +78,44 @@ struct ImageView: View {
             }
             Spacer()
             VStack{
-                
-                /// Select the recognition level — fast or accurate.
-                Picker("Selected Macro", selection: $selectedMacro) {
-                    ForEach(["calories", "fat", "carbs", "protein", "none"], id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding()
-                
-                if saved {
-                    Button("Scan Again"){
-                        path.removeLast()
-                    }
-                } else {
-                    Button("Save"){
-                        saveData()
-                        path.removeLast()
-                    }.opacity(saving ? 0 : 1)
-                        .overlay{
-                            if saving {
-                                ProgressView()
-                            }
+                VStack {
+                    HStack{
+                        Text("Calories: ")
+                        if let calories = predictions["calories"]?.foundString?.string {
+                            Text(calories)
                         }
-                        .accessibilityIgnoresInvertColors(false)
+                        Spacer()
+                        Text("Fat: ")
+                        if let fat = predictions["fat"]?.foundString?.string {
+                            Text(fat)
+                        }
+                    }
+                    .padding()
+                    HStack{
+                        Text("Carbs: ")
+                        if let carbs = predictions["carbs"]?.foundString?.string {
+                            Text(carbs)
+                        }
+                        Spacer()
+                        Text("Protein: ")
+                        if let protein = predictions["protein"]?.foundString?.string {
+                            Text(protein)
+                        }
+                    }
+                    .padding()
                 }
+                
+                Button("Predict"){
+                    predict()
+                }
+                .opacity(saving ? 0 : 1)
+                .overlay{
+                    if saving {
+                        ProgressView()
+                    }
+                }
+                .accessibilityIgnoresInvertColors(false)
+                .disabled(!imageOCR.ocrComplete)
             }
             .background(.white)
             
@@ -110,34 +127,6 @@ struct ImageView: View {
             Task {
                 try await imageOCR.performOCR(imageData: imageData)
             }
-        }
-        
-    }
-    
-    func handleTapGesture(id: UUID) {
-        if let foundStringList = imageOCR.nutritionLabel?.foundStringList, let index = foundStringList.firstIndex(where: {$0.id == id}) {
-            foundStringList[index].label = selectedMacro
-        }
-
-        
-        switch selectedMacro {
-        case "calories":
-            selectedMacro = "fat"
-        case "fat":
-            selectedMacro = "carbs"
-        case "carbs":
-            selectedMacro = "protein"
-        case "protein":
-            selectedMacro = "none"
-        default:
-            selectedMacro = "calories"
-        }
-    }
-    
-    func saveData() {
-        
-        if let nutritionLabel = imageOCR.nutritionLabel {            
-            context.insert(nutritionLabel)
         }
         
     }
@@ -178,6 +167,57 @@ struct ImageView: View {
                 }
             }
         }
+    }
+    
+    func predict() {
+        
+        guard let foundStringList = imageOCR.nutritionLabel?.foundStringList else {
+            print("No found string list!")
+            return
+        }
+        
+        let classifier = try! NutritionLabelClassifier(configuration: .init())
+        
+        
+        for foundString in foundStringList {
+            
+            
+            print("Predicting \(foundString.string) in \(foundString.fullLine)")
+            
+            guard let distanceToCalories = foundString.distanceToCalories, let slopeToCalories = foundString.slopeToCalories, let distanceToFat = foundString.distanceToFat, let slopeToFat = foundString.slopeToFat, let distanceToCarbs = foundString.distanceToCarbs, let slopeToCarbs = foundString.slopeToCarbs, let distanceToProtein = foundString.distanceToProtein, let slopeToProtein = foundString.slopeToProtein else {
+                print("Not all values available")
+                continue
+            }
+            
+            let isInCalorieString = Int64(foundString.isInCalorieString ? 1 : 0)
+            let isInFatString = Int64(foundString.isInFatString ? 1 : 0)
+            let isInCarbsString = Int64(foundString.isInCarbsString ? 1 : 0)
+            let isInProteinString = Int64(foundString.isInProteinString ? 1 : 0)
+            let isGrams = Int64(foundString.isGrams ? 1 : 0)
+            let isUnitless = Int64(foundString.isUnitless ? 1 : 0)
+            
+            
+            
+            
+            let output = try! classifier.prediction(isInCalorieString: isInCalorieString, isInFatString: isInFatString, isInCarbsString: isInCarbsString, isInProteinString: isInProteinString, isGrams: isGrams, isUnitless: isUnitless, distanceToCalories: Double(distanceToCalories), slopeToCalories: Double(slopeToCalories), distanceToFat: Double(distanceToFat), slopeToFat: Double(slopeToFat), distanceToCarbs: Double(distanceToCarbs), slopeToCarbs: Double(slopeToCarbs), distanceToProtein: Double(distanceToProtein), slopeToProtein: Double(slopeToProtein))
+            
+            
+            print("Predicted \(output.label) with probaility \(output.labelProbability)\n\n")
+            
+            if ["calories", "fat", "carbs", "protein"].contains(output.label), let currentPrediction = predictions[output.label], let newConfidence = output.labelProbability[output.label], newConfidence > currentPrediction.confidence {
+                
+                predictions[output.label] = Prediction(foundString: foundString, confidence: newConfidence)
+            }
+            
+        }
+        
+        for (label, prediction) in predictions {
+            if let foundString = prediction.foundString {
+                foundString.label = label
+                foundStringPredictions.append(foundString)
+            }
+        }
+        
     }
     
     func sendData() {
@@ -223,23 +263,18 @@ struct ImageView: View {
     }
 }
 
-struct ButtonBox: View {
+struct PredictionBox: View {
     let foundString: FoundString
     let image: UIImage
-    
-    let callback: () -> Void
     
     var body: some View {
         
         GeometryReader{proxy in
-            Button(action: callback){
-                Rectangle()
-                    .fill(Color.clear)
-                    .frame(width: getImageRect(proxy).width, height: getImageRect(proxy).height)
-                    .border(getStroke(foundString: foundString))
-                
-            }
-            .position(CGPoint(x: getImageRect(proxy).midX, y: getImageRect(proxy).midY))
+            Rectangle()
+                .fill(Color.clear)
+                .frame(width: getImageRect(proxy).width, height: getImageRect(proxy).height)
+                .border(getStroke(foundString: foundString))
+                .position(CGPoint(x: getImageRect(proxy).midX, y: getImageRect(proxy).midY))
             
         }
         
@@ -265,6 +300,11 @@ struct ButtonBox: View {
             return .red
         }
     }
+}
+
+struct Prediction {
+    let foundString: FoundString?
+    let confidence: Double
 }
 
 #Preview {

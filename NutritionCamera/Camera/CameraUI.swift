@@ -14,6 +14,7 @@ struct CameraUI: View {
     @State var didSetup = Bool()
 
     @Binding var path: NavigationPath
+    let mode: String
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -59,7 +60,7 @@ struct CameraUI: View {
         /// Show the `Done` button after the user captures a photo.
         } else {
             Button("Done") {
-                let imageDataContainer = ImageDataContainer(imageData: camera.photoData!)
+                let imageDataContainer = ImageDataContainer(imageData: camera.photoData!, mode: mode)
                 path = NavigationPath()
                 path.append(imageDataContainer)
             }
@@ -89,5 +90,6 @@ struct CaptureButtonStyle: ButtonStyle {
 
 struct ImageDataContainer: Hashable {
     let imageData: Data
+    let mode: String
 }
 
